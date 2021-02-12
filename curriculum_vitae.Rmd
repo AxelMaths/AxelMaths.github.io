@@ -1,0 +1,122 @@
+---
+params:
+  author: "Axel Mercier"
+  xlsx: "data/cv.xlsx"
+  bib: "data/cv.bib"
+  picture: "chat.png"
+title: '`r paste(params[["author"]], "Curriculum Vitæ", sep = " - ")`'
+author: '`r params[["author"]]`'
+output:
+  pagedown::html_resume:
+    css: ["utils/curriculum_vitae.css", "utils/fontawesome-free-5.14.0-web/css/all.min.css"]
+    mathjax: null
+    includes:
+      in_header: "utils/_ga_script.html"
+editor_options: 
+  chunk_output_type: console
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, output_file = "index.html", encoding = encoding, output_dir = "docs") })
+---
+
+```{r setup, include = FALSE}
+options(stringsAsFactors = FALSE)
+knitr::opts_chunk$set(
+  results = "asis", 
+  eval = TRUE, 
+  echo = FALSE, 
+  message = FALSE, 
+  error = FALSE, 
+  warning = FALSE
+)
+source("utils/cv.R")
+```
+
+# Aside
+
+```{r, out.extra = 'style="width: 226px;" id="picture"'}
+knitr::include_graphics(params[["picture"]])
+```
+
+```{r}
+cat(
+  contact_section(xlsx = params[["xlsx"]], sheet = "contact"),
+  skills_section(xlsx = params[["xlsx"]], sheet = "skills"),
+  disclaimer_section(text = NULL),
+  title_section(author = params[["author"]]),
+  profil_section(xlsx = params[["xlsx"]], sheet = "profil"),
+  sep = "\n"
+)
+```
+
+```{r, eval = FALSE, out.extra = 'style="display: block; margin-left: auto; margin-right: auto; width: 90%;"'}
+dir.create(file.path(tempdir(), "hex"), showWarnings = FALSE)
+source(file.path("utils", "hexwall.R"))
+hex_list <- c(
+  "rlille.png", 
+  "omicsr.png", 
+  "coeos.png",
+  "carot.png", 
+  "insane.png", 
+  "mistr.png", 
+  "nacho.png", 
+  "rain.png"
+)
+hex_logo <- glue::glue("https://raw.githubusercontent.com/mcanouil/hex-stickers/master/PNG/{tolower(hex_list)}")
+hex_logo_ordered <- file.path(tempdir(), "hex", paste(1:length(hex_logo), basename(hex_logo), sep = "-"))
+utils::download.file(url = hex_logo, destfile = hex_logo_ordered, method = "libcurl")
+hex_wall <- hexwall(
+  path = file.path(tempdir(), "hex"),
+  sticker_row_size = 8,
+  sticker_width = 181
+)
+# magick::image_write(image = hex_wall, path = file.path("data", "hex_wall.png"), format = "png")
+unlink(file.path(tempdir(), "hex"), recursive = TRUE)
+hex_wall
+```
+
+```{r}
+cat(
+  education_section(xlsx = params[["xlsx"]], sheet = "education"),
+  experience_section(xlsx = params[["xlsx"]], sheet = "experience", page_break_after = FALSE),
+  #workshop_section(xlsx = params[["xlsx"]], sheet = "workshop"),
+#  awards_section(xlsx = params[["xlsx"]], sheet = "awards"),
+ # oral_section(xlsx = params[["xlsx"]], sheet = "oral", page_break_after = TRUE),
+  #poster_section(xlsx = params[["xlsx"]], sheet = "poster"),
+  #packages_section(xlsx = params[["xlsx"]], sheet = "packages", author = params[["author"]]),
+  #articles_section(bib = params[["bib"]], author = params[["author"]]),
+  sep = "\n"
+)
+```
+
+## Hobies  {data-icon=heart}
+
+### Sports
+
+Martial arts (3 years Karate, 2ans Judo), (*skills : rigor, respect and humility*). Roller (7 years, voluntary instructor for 6 years)
+
+N/A
+
+N/A
+
+### Volunteering
+
+Volunteer at ["Institut Pasteur de Lille"](https://www.pasteur-lille.fr/accueil/). Voluntary tour guide at Guise castle, owner "Club du Vieux Manoir" (*skills : communication, clearness*). Voluntary teacher in spain refugee camp (1 month, 2013) (*skills: humility, patience, adaptation*)
+
+N/A
+
+N/A
+
+### Travel
+
+United Kingdom (at least 10 times), Spain (twice), Greece(one week, once), poland (one week, twice)
+
+N/A
+
+N/A
+
+### Self-study
+
+Research integrity in scientific professions, Introduction to histology, chemistry, fundamental to artificial ventilation, focus on myelinisation of neurons (Via [Fun Mooc](https://www.fun-mooc.fr))
+
+N/A
+
+N/A

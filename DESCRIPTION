@@ -1,0 +1,18 @@
+Package: curriculum_vitae
+Title: Curriculum Vitae
+Version: 0.0.1
+Imports: 
+    Hmisc,
+    rmarkdown,
+    pagedown,
+    glue,
+    tibble,
+    dplyr,
+    tidyr,
+    magrittr,
+    purrr,
+    readxl,
+    magick,
+    colorspace
+SystemRequirements: ImageMagick++: ImageMagick-c++-devel (rpm) or libmagick++-dev (deb)
+License: CC BY 4.0
