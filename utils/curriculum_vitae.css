@@ -271,7 +271,7 @@ h1, h2 {
 .details {
   flex: 1 0 0;
   padding-left: var(--decorator-horizontal-margin);
-  padding-top: calc(var(--row-blocks-padding-top) - 0.05rem) !important; /* not sure why but this is needed for better alignment */
+  padding-top: calc(0.95*(var(--row-blocks-padding-top) - 0.05rem)) !important; /* not sure why but this is needed for better alignment */
 }
 
 .details header {

@@ -1,3 +1,6 @@
+options(encoding = 'UTF-8')
+
+
 `%>%` <- magrittr::`%>%`
 
 add_github_logo <- function(url) {
@@ -28,6 +31,8 @@ contact_section <- function(xlsx = "data/cv.xlsx", sheet = "contact") {
       '## Contact Info {{#contact}}',
       '\n\n',
       '- <i class="fa fa-user" style="color: #4169e1;"></i> {position}',
+      '\n',
+      '- <i class="fa fa-user" style="color: #4169e1;"></i> {age}',
       '\n',
       '- <i class="fa fa-map-marker" style="color: #4169e1;"></i> {city}',
       '\n',
