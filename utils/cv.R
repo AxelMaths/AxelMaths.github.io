@@ -60,6 +60,14 @@ skills_section <- function(xlsx = "data/cv.xlsx", sheet = "skills") {
       '- <u style="color: #ff8000;">*Intermediate:*</u> {intermediate}',
       '\n',
       '- <u style="color: #df3a01;">*Basic:*</u> {basic}',
+      '\n\n\n\n',
+      '## Language Skills',
+      "\n\n",
+      '- <u style="color: #40ff00;">*French:*</u> {French}',
+      '\n',
+      '- <u style="color: #ff8000;">*English:*</u> {English}',
+      '\n',
+      '- <u style="color: #df3a01;">*Spanish:*</u> {Spanish}',
       '\n\n'
     )
 }
