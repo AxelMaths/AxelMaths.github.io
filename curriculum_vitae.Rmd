@@ -3,7 +3,7 @@ params:
   author: "Axel Mercier"
   xlsx: "data/cv.xlsx"
   bib: "data/cv.bib"
-  picture: "chat.png"
+  picture: "photo.jpg"
 title: '`r paste(params[["author"]], "", sep = " - ")`'
 author: '`r params[["author"]]`'
 output:
